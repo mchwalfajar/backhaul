@@ -16,7 +16,6 @@
                 <th>Action</th>
                 <th>Location</th>
                 <th>Downtime</th>
-                <th>Aksi</th>
             </tr>
             <% maintenanceItems.forEach(item => { %>
             <tr>
@@ -44,8 +43,10 @@
             <tr>
                 <td><%= item.aktivasi %></td>
                 <td><%= item.deaktivasi %></td>
-                <td><%= item.awal_periode %></td>
-                <td><%= item.akhir_periode %></td>
+                <td><%= item.awal_periode.toISOString().substring(0, 10) %></td>
+                <td>
+                    <%= item.akhir_periode.toISOString().substring(0, 10) %>
+                </td>
                 <td>
                     <a href="/edit/inmarsat/<%= item.id %>">Edit</a>
                     <a href="/delete/inmarsat/<%= item.id %>">Hapus</a>

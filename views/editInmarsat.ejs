@@ -25,17 +25,17 @@
                 required />
             <label for="awal_periode">Awal Periode:</label>
             <input
-                type="text"
+                type="date"
                 id="awal_periode"
                 name="awal_periode"
-                value="<%= item.awal_periode %>"
+                value="<%= item.awal_periode.toISOString().substring(0, 10) %>"
                 required />
             <label for="akhir_periode">Akhir Periode:</label>
             <input
-                type="text"
+                type="date"
                 id="akhir_periode"
                 name="akhir_periode"
-                value="<%= item.akhir_periode %>"
+                value="<%= item.akhir_periode.toISOString().substring(0, 10) %>"
                 required />
             <button type="submit">Simpan Perubahan</button>
         </form>
