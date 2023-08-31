@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tambah Inmarsat</title>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <h1>Tambah Inmarsat</h1>
+        <form method="post" action="/add/inmarsat">
+            <label for="aktivasi">Aktivasi:</label>
+            <input type="text" id="aktivasi" name="aktivasi" required />
+            <label for="deaktivasi">Deaktivasi:</label>
+            <input type="text" id="deaktivasi" name="deaktivasi" required />
+            <label for="periode">Periode:</label>
+            <input type="text" id="periode" name="periode" required />
+            <button type="submit">Simpan</button>
+        </form>
+        <a href="/">Kembali</a>
+    </body>
+</html>

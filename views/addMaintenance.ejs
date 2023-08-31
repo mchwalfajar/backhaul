@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tambah Maintenance</title>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <h1>Tambah Maintenance</h1>
+        <form method="post" action="/add/maintenance">
+            <label for="action">Action:</label>
+            <input type="text" id="action" name="action" required />
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required />
+            <label for="downtime">Downtime:</label>
+            <input type="text" id="downtime" name="downtime" required />
+            <button type="submit">Simpan</button>
+        </form>
+        <a href="/">Kembali</a>
+    </body>
+</html>

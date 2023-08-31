@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Edit Inmarsat</title>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <h1>Edit Inmarsat</h1>
+        <form method="post" action="/edit/inmarsat/<%= item.id %>">
+            <label for="aktivasi">Aktivasi:</label>
+            <input
+                type="text"
+                id="aktivasi"
+                name="aktivasi"
+                value="<%= item.aktivasi %>"
+                required />
+            <label for="deaktivasi">Deaktivasi:</label>
+            <input
+                type="text"
+                id="deaktivasi"
+                name="deaktivasi"
+                value="<%= item.deaktivasi %>"
+                required />
+            <label for="awal_periode">Awal Periode:</label>
+            <input
+                type="text"
+                id="awal_periode"
+                name="awal_periode"
+                value="<%= item.awal_periode %>"
+                required />
+            <label for="akhir_periode">Akhir Periode:</label>
+            <input
+                type="text"
+                id="akhir_periode"
+                name="akhir_periode"
+                value="<%= item.akhir_periode %>"
+                required />
+            <button type="submit">Simpan Perubahan</button>
+        </form>
+        <a href="/">Kembali</a>
+    </body>
+</html>

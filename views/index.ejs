@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Input Data NMC-News</title>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <h1>Input Data NMC-News</h1>
+
+        <h2>Maintenance</h2>
+        <a href="/add/maintenance">Tambah Maintenance</a>
+        <table>
+            <tr>
+                <th>Action</th>
+                <th>Location</th>
+                <th>Downtime</th>
+                <th>Aksi</th>
+            </tr>
+            <% maintenanceItems.forEach(item => { %>
+            <tr>
+                <td><%= item.action %></td>
+                <td><%= item.location %></td>
+                <td><%= item.downtime %></td>
+                <td>
+                    <a href="/edit/maintenance/<%= item.id %>">Edit</a>
+                    <a href="/delete/maintenance/<%= item.id %>">Hapus</a>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+
+        <h2>Inmarsat</h2>
+        <a href="/add/inmarsat">Tambah Inmarsat</a>
+        <table>
+            <tr>
+                <th>Aktivasi</th>
+                <th>Deaktivasi</th>
+                <th>Awal Periode</th>
+                <th>Akhir Periode</th>
+            </tr>
+            <% inmarsatItems.forEach(item => { %>
+            <tr>
+                <td><%= item.aktivasi %></td>
+                <td><%= item.deaktivasi %></td>
+                <td><%= item.awal_periode %></td>
+                <td><%= item.akhir_periode %></td>
+                <td>
+                    <a href="/edit/inmarsat/<%= item.id %>">Edit</a>
+                    <a href="/delete/inmarsat/<%= item.id %>">Hapus</a>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+    </body>
+</html>

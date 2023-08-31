@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Edit Maintenance</title>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <h1>Edit Maintenance</h1>
+        <form method="post" action="/edit/maintenance/<%= item.id %>">
+            <label for="action">Action:</label>
+            <input
+                type="text"
+                id="action"
+                name="action"
+                value="<%= item.action %>"
+                required />
+            <label for="location">Location:</label>
+            <input
+                type="text"
+                id="location"
+                name="location"
+                value="<%= item.location %>"
+                required />
+            <label for="downtime">Downtime:</label>
+            <input
+                type="text"
+                id="downtime"
+                name="downtime"
+                value="<%= item.downtime %>"
+                required />
+            <button type="submit">Simpan Perubahan</button>
+        </form>
+        <a href="/">Kembali</a>
+    </body>
+</html>
