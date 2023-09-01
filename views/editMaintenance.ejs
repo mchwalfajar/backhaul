@@ -9,26 +9,33 @@
     <body>
         <h1>Edit Maintenance</h1>
         <form method="post" action="/edit/maintenance/<%= item.id %>">
-            <label for="action">Action:</label>
+            <label for="maintenance">Maintenance:</label>
             <input
                 type="text"
-                id="action"
-                name="action"
-                value="<%= item.action %>"
+                id="maintenance"
+                name="maintenance"
+                value="<%= item.maintenance %>"
                 required />
-            <label for="location">Location:</label>
+            <label for="detail">Detail:</label>
             <input
                 type="text"
-                id="location"
-                name="location"
-                value="<%= item.location %>"
+                id="detail"
+                name="detail"
+                value="<%= item.detail %>"
                 required />
-            <label for="downtime">Downtime:</label>
+            <label for="awal_downtime">Awal Downtime:</label>
             <input
-                type="text"
-                id="downtime"
-                name="downtime"
-                value="<%= item.downtime %>"
+                type="time"
+                id="awal_downtime"
+                name="awal_downtime"
+                value="<%= item.awal_downtime %>"
+                required />
+            <label for="akhir_downtime">Akhir Downtime:</label>
+            <input
+                type="time"
+                id="akhir_downtime"
+                name="akhir_downtime"
+                value="<%= item.akhir_downtime %>"
                 required />
             <button type="submit">Simpan Perubahan</button>
         </form>

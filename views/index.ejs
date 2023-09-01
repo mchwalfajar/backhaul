@@ -13,15 +13,17 @@
         <a href="/add/maintenance">Tambah Maintenance</a>
         <table>
             <tr>
-                <th>Action</th>
-                <th>Location</th>
-                <th>Downtime</th>
+                <th>Maintenance</th>
+                <th>Detail</th>
+                <th>Awal Downtime</th>
+                <th>Akhir Downtime</th>
             </tr>
             <% maintenanceItems.forEach(item => { %>
             <tr>
-                <td><%= item.action %></td>
-                <td><%= item.location %></td>
-                <td><%= item.downtime %></td>
+                <td><%= item.maintenance %></td>
+                <td><%= item.detail %></td>
+                <td><%= item.awal_downtime %></td>
+                <td><%= item.akhir_downtime %></td>
                 <td>
                     <a href="/edit/maintenance/<%= item.id %>">Edit</a>
                     <a href="/delete/maintenance/<%= item.id %>">Hapus</a>

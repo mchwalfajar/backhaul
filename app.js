@@ -56,9 +56,10 @@ app.get("/add/maintenance", (req, res) => {
 
 app.post("/add/maintenance", (req, res) => {
     const newItem = {
-        action: req.body.action,
-        location: req.body.location,
-        downtime: req.body.downtime,
+        maintenance: req.body.maintenance,
+        detail: req.body.detail,
+        awal_downtime: req.body.awal_downtime,
+        akhir_downtime: req.body.akhir_downtime,
     }
     db.query("INSERT INTO maintenance SET ?", newItem, (err, result) => {
         if (err) throw err
@@ -81,9 +82,10 @@ app.get("/edit/maintenance/:id", (req, res) => {
 app.post("/edit/maintenance/:id", (req, res) => {
     const itemId = req.params.id
     const updatedItem = {
-        action: req.body.action,
-        location: req.body.location,
-        downtime: req.body.downtime,
+        maintenance: req.body.maintenance,
+        detail: req.body.detail,
+        awal_downtime: req.body.awal_downtime,
+        akhir_downtime: req.body.akhir_downtime,
     }
     db.query(
         "UPDATE maintenance SET ? WHERE id = ?",

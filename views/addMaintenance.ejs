@@ -9,12 +9,22 @@
     <body>
         <h1>Tambah Maintenance</h1>
         <form method="post" action="/add/maintenance">
-            <label for="action">Action:</label>
-            <input type="text" id="action" name="action" required />
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required />
-            <label for="downtime">Downtime:</label>
-            <input type="text" id="downtime" name="downtime" required />
+            <label for="maintenance">Maintenance:</label>
+            <input type="text" id="maintenance" name="maintenance" required />
+            <label for="detail">Detail:</label>
+            <input type="text" id="detail" name="detail" required />
+            <label for="awal_downtime">Awal Downtime:</label>
+            <input
+                type="time"
+                id="awal_downtime"
+                name="awal_downtime"
+                required />
+            <label for="akhir_downtime">Akhir Downtime:</label>
+            <input
+                type="time"
+                id="akhir_downtime"
+                name="akhir_downtime"
+                required />
             <button type="submit">Simpan</button>
         </form>
         <a href="/">Kembali</a>
