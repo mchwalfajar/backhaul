@@ -3,6 +3,7 @@ const mysql = require("mysql")
 const bodyParser = require("body-parser")
 const app = express()
 const port = 3002
+app.use(express.static('public'));
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -28,6 +29,21 @@ app.get("/home", (req, res) => {
             if (err) throw err
 
             res.render("home", {
+                maintenanceItems: maintenanceResults,
+                inmarsatItems: inmarsatResults,
+            })
+        })
+    })
+})
+
+app.get("/buffer", (req, res) => {
+    db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
+        if (err) throw err
+
+        db.query("SELECT * FROM inmarsat", (err, inmarsatResults) => {
+            if (err) throw err
+
+            res.render("buffer", {
                 maintenanceItems: maintenanceResults,
                 inmarsatItems: inmarsatResults,
             })
@@ -159,3 +175,4 @@ app.get("/delete/inmarsat/:id", (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 })
+ 
