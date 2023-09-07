@@ -3,6 +3,7 @@ const mysql = require("mysql")
 const bodyParser = require("body-parser")
 const app = express()
 const port = 3002
+app.use("/public", express.static("public"))
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -16,8 +17,8 @@ db.connect((err) => {
     console.log("Database connected")
 })
 
+// Middleware parse req
 app.use(bodyParser.urlencoded({ extended: true }))
-
 app.set("view engine", "ejs")
 
 app.get("/home", (req, res) => {
@@ -26,7 +27,6 @@ app.get("/home", (req, res) => {
 
         db.query("SELECT * FROM inmarsat", (err, inmarsatResults) => {
             if (err) throw err
-
             res.render("home", {
                 maintenanceItems: maintenanceResults,
                 inmarsatItems: inmarsatResults,
