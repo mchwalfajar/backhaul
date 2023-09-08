@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="/styles.css" />
     </head>
     <body>
-        <h1>Input Data NMC-News</h1>
+        <h1>Input Data NMC-Announcer</h1>
 
         <h2>Maintenance</h2>
         <a href="/add/maintenance">Tambah Maintenance</a>
@@ -15,15 +15,13 @@
             <tr>
                 <th>Maintenance</th>
                 <th>Detail</th>
-                <th>Awal Downtime</th>
-                <th>Akhir Downtime</th>
+                <th>Waktu Downtime</th>
             </tr>
             <% maintenanceItems.forEach(item => { %>
             <tr>
                 <td><%= item.maintenance %></td>
                 <td><%= item.detail %></td>
-                <td><%= item.awal_downtime %></td>
-                <td><%= item.akhir_downtime %></td>
+                <td><%= item.waktu_downtime %></td>
                 <td>
                     <a href="/edit/maintenance/<%= item.id %>">Edit</a>
                     <a href="/delete/maintenance/<%= item.id %>">Hapus</a>

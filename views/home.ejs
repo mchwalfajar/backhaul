@@ -48,10 +48,11 @@
                             alt="..."
                             style="height: 1000px" />
                         <div class="carousel-caption">
-                            <% maintenanceItems.forEach(item => { %>
-                            <h1><%= item.maintenance %></h1>
-                            <p><%= item.detail %></p>
-                            <% }); %>
+                            <h1><%= maintenanceItem1.maintenance %></h1>
+                            <br />
+                            <h5><%= maintenanceItem1.detail %></h5>
+                            <br />
+                            <h4><%= maintenanceItem1.waktu_downtime %></h4>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -61,11 +62,11 @@
                             alt="..."
                             style="height: 1000px" />
                         <div class="carousel-caption d-none d-md-block">
-                            <h1>Urgen Maitainance</h1>
-                            <p>
-                                Some representative placeholder content for the
-                                second slide.
-                            </p>
+                            <h1><%= maintenanceItem2.maintenance %></h1>
+                            <br />
+                            <h5><%= maintenanceItem2.detail %></h5>
+                            <br />
+                            <h4><%= maintenanceItem2.waktu_downtime %></h4>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -75,15 +76,15 @@
                             alt="..."
                             style="height: 1000px" />
                         <div class="carousel-caption d-none d-md-block">
-                            <script src=""></script>
-                            <h1>Maitainance</h1>
-                            <p>
-                                Some representative placeholder content for the
-                                third slide.
-                            </p>
+                            <h1><%= maintenanceItem3.maintenance %></h1>
+                            <br />
+                            <h5><%= maintenanceItem3.detail %></h5>
+                            <br />
+                            <h4><%= maintenanceItem3.waktu_downtime %></h4>
                         </div>
                     </div>
                 </div>
+
                 <button
                     class="carousel-control-prev"
                     type="button"
@@ -107,7 +108,7 @@
             </div>
         </div>
 
-        <!-- Carrousel -->
+        <!-- End of Carrousel -->
 
         <!-- Running Text -->
         <marquee behavior="scroll" direction="left">

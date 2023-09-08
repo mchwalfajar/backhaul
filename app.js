@@ -22,13 +22,20 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
 
 app.get("/home", (req, res) => {
-    db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
+    db.query("SELECT * FROM maintenance LIMIT 3", (err, maintenanceResults) => {
         if (err) throw err
 
         db.query("SELECT * FROM inmarsat", (err, inmarsatResults) => {
             if (err) throw err
+
+            const maintenanceItem1 = maintenanceResults[0]
+            const maintenanceItem2 = maintenanceResults[1]
+            const maintenanceItem3 = maintenanceResults[2]
+
             res.render("home", {
-                maintenanceItems: maintenanceResults,
+                maintenanceItem1,
+                maintenanceItem2,
+                maintenanceItem3,
                 inmarsatItems: inmarsatResults,
             })
         })
@@ -50,6 +57,7 @@ app.get("/", (req, res) => {
     })
 })
 
+// Maintenance Routing
 app.get("/add/maintenance", (req, res) => {
     res.render("addMaintenance")
 })
@@ -58,8 +66,7 @@ app.post("/add/maintenance", (req, res) => {
     const newItem = {
         maintenance: req.body.maintenance,
         detail: req.body.detail,
-        awal_downtime: req.body.awal_downtime,
-        akhir_downtime: req.body.akhir_downtime,
+        waktu_downtime: req.body.waktu_downtime,
     }
     db.query("INSERT INTO maintenance SET ?", newItem, (err, result) => {
         if (err) throw err
@@ -84,8 +91,7 @@ app.post("/edit/maintenance/:id", (req, res) => {
     const updatedItem = {
         maintenance: req.body.maintenance,
         detail: req.body.detail,
-        awal_downtime: req.body.awal_downtime,
-        akhir_downtime: req.body.akhir_downtime,
+        waktu_downtime: req.body.waktu_downtime,
     }
     db.query(
         "UPDATE maintenance SET ? WHERE id = ?",
@@ -113,8 +119,7 @@ app.post("/add/inmarsat", (req, res) => {
     const newItem = {
         aktivasi: req.body.aktivasi,
         deaktivasi: req.body.deaktivasi,
-        awal_periode: req.body.awal_periode,
-        akhir_periode: req.body.akhir_periode,
+        waktu_downtime: req.body.waktu_downtime,
     }
     db.query("INSERT INTO inmarsat SET ?", newItem, (err, result) => {
         if (err) throw err
@@ -130,6 +135,7 @@ app.get("/edit/inmarsat/:id", (req, res) => {
     })
 })
 
+// Inmarsat Routing
 app.post("/edit/inmarsat/:id", (req, res) => {
     const itemId = req.params.id
     const updatedItem = {
