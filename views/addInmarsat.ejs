@@ -4,25 +4,58 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Tambah Inmarsat</title>
-        <link rel="stylesheet" href="/styles.css" />
+        <!-- Link ke Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../public/style/style.css" />
     </head>
     <body>
-        <h1>Tambah Inmarsat</h1>
-        <form method="post" action="/add/inmarsat">
-            <label for="aktivasi">Aktivasi:</label>
-            <input type="text" id="aktivasi" name="aktivasi" required />
-            <label for="deaktivasi">Deaktivasi:</label>
-            <input type="text" id="deaktivasi" name="deaktivasi" required />
-            <label for="awal_periode">Awal Periode:</label>
-            <input type="date" id="awal_periode" name="awal_periode" required />
-            <label for="akhir_periode">Akhir Periode:</label>
-            <input
-                type="date"
-                id="akhir_periode"
-                name="akhir_periode"
-                required />
-            <button type="submit">Simpan</button>
-        </form>
-        <a href="/">Kembali</a>
+        <div class="container mt-5">
+            <h1>Tambah Inmarsat</h1>
+            <form method="post" action="/add/inmarsat">
+                <div class="form-group">
+                    <label for="aktivasi">Aktivasi:</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="aktivasi"
+                        name="aktivasi"
+                        required />
+                </div>
+                <div class="form-group">
+                    <label for="deaktivasi">Deaktivasi:</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="deaktivasi"
+                        name="deaktivasi"
+                        required />
+                </div>
+                <div class="form-group">
+                    <label for="awal_periode">Awal Periode:</label>
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="awal_periode"
+                        name="awal_periode"
+                        required />
+                </div>
+                <div class="form-group">
+                    <label for="akhir_periode">Akhir Periode:</label>
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="akhir_periode"
+                        name="akhir_periode"
+                        required />
+                </div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+            <a href="/" class="btn btn-secondary mt-3">Kembali</a>
+        </div>
     </body>
 </html>

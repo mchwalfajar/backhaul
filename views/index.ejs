@@ -3,56 +3,115 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Input Data NMC-News</title>
-        <link rel="stylesheet" href="/styles.css" />
+        <title>NMCAnnouncer Data</title>
+        <!-- Link ke Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../public/style/style.css" />
     </head>
     <body>
-        <h1>Input Data NMC-Announcer</h1>
+        <div class="container mt-5">
+            <h1 class="text-center"><a href="/home">NMC Announcer</a></h1>
 
-        <h2>Maintenance</h2>
-        <a href="/add/maintenance">Tambah Maintenance</a>
-        <table>
-            <tr>
-                <th>Maintenance</th>
-                <th>Detail</th>
-                <th>Waktu Downtime</th>
-            </tr>
-            <% maintenanceItems.forEach(item => { %>
-            <tr>
-                <td><%= item.maintenance %></td>
-                <td><%= item.detail %></td>
-                <td><%= item.waktu_downtime %></td>
-                <td>
-                    <a href="/edit/maintenance/<%= item.id %>">Edit</a>
-                    <a href="/delete/maintenance/<%= item.id %>">Hapus</a>
-                </td>
-            </tr>
-            <% }); %>
-        </table>
+            <!-- <h2 class="mt-4">Maintenance</h2> -->
+            <a class="btn btn-primary mb-2" href="/add/maintenance"
+                >Maintenance</a
+            >
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Maintenance</th>
+                        <th>Detail</th>
+                        <th>Awal Tanggal Downtime</th>
+                        <th>Awal Jam Downtime</th>
+                        <th>Akhir Tanggal Downtime</th>
+                        <th>Akhir Jam Downtime</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% maintenanceItems.forEach(item => { %>
+                    <tr>
+                        <td><%= item.maintenance %></td>
+                        <td><%= item.detail %></td>
+                        <td>
+                            <%=
+                            item.awal_tanggal_downtime.toLocaleDateString().substring(0,
+                            10) %>
+                        </td>
+                        <td>
+                            <%= item.awal_jam_downtime.substring(0, 5 ) %> WIB
+                        </td>
+                        <td>
+                            <%=
+                            item.akhir_tanggal_downtime.toLocaleDateString().substring(0,
+                            10) %>
+                        </td>
+                        <td>
+                            <%= item.akhir_jam_downtime.substring(0, 5 ) %> WIB
+                        </td>
+                        <td>
+                            <a
+                                class="btn btn-warning btn-sm"
+                                href="/edit/maintenance/<%= item.id %>"
+                                >Edit</a
+                            >
+                            <a
+                                class="btn btn-danger btn-sm"
+                                href="/delete/maintenance/<%= item.id %>"
+                                >Hapus</a
+                            >
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
 
-        <h2>Inmarsat</h2>
-        <a href="/add/inmarsat">Tambah Inmarsat</a>
-        <table>
-            <tr>
-                <th>Aktivasi</th>
-                <th>Deaktivasi</th>
-                <th>Awal Periode</th>
-                <th>Akhir Periode</th>
-            </tr>
-            <% inmarsatItems.forEach(item => { %>
-            <tr>
-                <td><%= item.aktivasi %></td>
-                <td><%= item.deaktivasi %></td>
-                <td><%= item.awal_periode.toISOString().substring(0, 10) %></td>
-                <td>
-                    <%= item.akhir_periode.toISOString().substring(0, 10) %>
-                </td>
-                <td>
-                    <a href="/edit/inmarsat/<%= item.id %>">Edit</a>
-                    <a href="/delete/inmarsat/<%= item.id %>">Hapus</a>
-                </td>
-            </tr>
-            <% }); %>
-        </table>
+            <!-- <h2 class="mt-4">Inmarsat</h2> -->
+            <a class="btn btn-primary mb-2" href="/add/inmarsat">Inmarsat</a>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Aktivasi</th>
+                        <th>Deaktivasi</th>
+                        <th>Awal Periode</th>
+                        <th>Akhir Periode</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% inmarsatItems.forEach(item => { %>
+                    <tr>
+                        <td><%= item.aktivasi %></td>
+                        <td><%= item.deaktivasi %></td>
+                        <td>
+                            <%= item.awal_periode.toISOString().substring(0, 10)
+                            %>
+                        </td>
+                        <td>
+                            <%= item.akhir_periode.toISOString().substring(0,
+                            10) %>
+                        </td>
+                        <td>
+                            <a
+                                class="btn btn-warning btn-sm"
+                                href="/edit/inmarsat/<%= item.id %>"
+                                >Edit</a
+                            >
+                            <a
+                                class="btn btn-danger btn-sm"
+                                href="/delete/inmarsat/<%= item.id %>"
+                                >Hapus</a
+                            >
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
     </body>
 </html>

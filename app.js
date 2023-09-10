@@ -66,10 +66,17 @@ app.post("/add/maintenance", (req, res) => {
     const newItem = {
         maintenance: req.body.maintenance,
         detail: req.body.detail,
-        waktu_downtime: req.body.waktu_downtime,
+        awal_tanggal_downtime: req.body.awal_tanggal_downtime,
+        awal_jam_downtime: req.body.awal_jam_downtime,
+        akhir_tanggal_downtime: req.body.akhir_tanggal_downtime,
+        akhir_jam_downtime: req.body.akhir_jam_downtime,
     }
     db.query("INSERT INTO maintenance SET ?", newItem, (err, result) => {
-        if (err) throw err
+        if (err) {
+            console.error(err)
+            res.status(500).send("fail add maintenance data")
+            return
+        }
         res.redirect("/")
     })
 })
@@ -91,7 +98,10 @@ app.post("/edit/maintenance/:id", (req, res) => {
     const updatedItem = {
         maintenance: req.body.maintenance,
         detail: req.body.detail,
-        waktu_downtime: req.body.waktu_downtime,
+        awal_tanggal_downtime: req.body.awal_tanggal_downtime,
+        awal_jam_downtime: req.body.awal_jam_downtime,
+        akhir_tanggal_downtime: req.body.akhir_tanggal_downtime,
+        akhir_jam_downtime: req.body.akhir_jam_downtime,
     }
     db.query(
         "UPDATE maintenance SET ? WHERE id = ?",
@@ -111,6 +121,7 @@ app.get("/delete/maintenance/:id", (req, res) => {
     })
 })
 
+// Inmarsat Routing
 app.get("/add/inmarsat", (req, res) => {
     res.render("addInmarsat")
 })
@@ -119,7 +130,10 @@ app.post("/add/inmarsat", (req, res) => {
     const newItem = {
         aktivasi: req.body.aktivasi,
         deaktivasi: req.body.deaktivasi,
-        waktu_downtime: req.body.waktu_downtime,
+        awal_tanggal_downtime: req.body.awal_tanggal_downtime,
+        awal_jam_downtime: req.body.awal_jam_downtime,
+        akhir_tanggal_downtime: req.body.akhir_tanggal_downtime,
+        akhir_jam_downtime: req.body.akhir_jam_downtime,
     }
     db.query("INSERT INTO inmarsat SET ?", newItem, (err, result) => {
         if (err) throw err
@@ -135,7 +149,6 @@ app.get("/edit/inmarsat/:id", (req, res) => {
     })
 })
 
-// Inmarsat Routing
 app.post("/edit/inmarsat/:id", (req, res) => {
     const itemId = req.params.id
     const updatedItem = {

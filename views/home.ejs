@@ -49,10 +49,20 @@
                             style="height: 1000px" />
                         <div class="carousel-caption">
                             <h1><%= maintenanceItem1.maintenance %></h1>
-                            <br />
                             <h5><%= maintenanceItem1.detail %></h5>
-                            <br />
-                            <h4><%= maintenanceItem1.waktu_downtime %></h4>
+                            <h4>-----------------</h4>
+                            <h4>Downtime pada:</h4>
+                            <h4>
+                                <%=
+                                formatDate(maintenanceItem1.awal_tanggal_downtime)
+                                %> jam <%=
+                                maintenanceItem1.awal_jam_downtime.substring(0,
+                                5) %> WIB - <%=
+                                formatDate(maintenanceItem1.akhir_tanggal_downtime)
+                                %> jam <%=
+                                maintenanceItem1.akhir_jam_downtime.substring(0,
+                                5 )%> WIB
+                            </h4>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -63,10 +73,20 @@
                             style="height: 1000px" />
                         <div class="carousel-caption d-none d-md-block">
                             <h1><%= maintenanceItem2.maintenance %></h1>
-                            <br />
                             <h5><%= maintenanceItem2.detail %></h5>
-                            <br />
-                            <h4><%= maintenanceItem2.waktu_downtime %></h4>
+                            <h4>-----------------</h4>
+                            <h4>Downtime pada:</h4>
+                            <h4>
+                                <%=
+                                formatDate(maintenanceItem2.awal_tanggal_downtime)
+                                %> jam <%=
+                                maintenanceItem2.awal_jam_downtime.substring(0,
+                                5) %> WIB - <%=
+                                formatDate(maintenanceItem2.akhir_tanggal_downtime)
+                                %> jam <%=
+                                maintenanceItem2.akhir_jam_downtime.substring(0,
+                                5 )%> WIB
+                            </h4>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -77,10 +97,20 @@
                             style="height: 1000px" />
                         <div class="carousel-caption d-none d-md-block">
                             <h1><%= maintenanceItem3.maintenance %></h1>
-                            <br />
                             <h5><%= maintenanceItem3.detail %></h5>
-                            <br />
-                            <h4><%= maintenanceItem3.waktu_downtime %></h4>
+                            <h4>-----------------</h4>
+                            <h4>Downtime pada:</h4>
+                            <h4>
+                                <%=
+                                formatDate(maintenanceItem3.awal_tanggal_downtime)
+                                %> jam <%=
+                                maintenanceItem3.awal_jam_downtime.substring(0,
+                                5) %> WIB - <%=
+                                formatDate(maintenanceItem3.akhir_tanggal_downtime)
+                                %> jam <%=
+                                maintenanceItem3.akhir_jam_downtime.substring(0,
+                                5 )%> WIB
+                            </h4>
                         </div>
                     </div>
                 </div>
@@ -134,5 +164,16 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+
+        <script>
+            function formatDate(dateString) {
+                const options = {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                }
+                return new Date(dateString).toLocaleDateString("id-ID", options)
+            }
+        </script>
     </body>
 </html>
