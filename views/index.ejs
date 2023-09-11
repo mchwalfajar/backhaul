@@ -26,10 +26,10 @@
                     <tr>
                         <th>Maintenance</th>
                         <th>Detail</th>
-                        <th>Awal Tanggal Downtime</th>
-                        <th>Awal Jam Downtime</th>
-                        <th>Akhir Tanggal Downtime</th>
-                        <th>Akhir Jam Downtime</th>
+                        <th>Tanggal Awal Downtime</th>
+                        <th>Jam Awal Downtime</th>
+                        <th>Tanggal Akhir Downtime</th>
+                        <th>Jam Akhir Downtime</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -88,16 +88,18 @@
                 <tbody>
                     <% inmarsatItems.forEach(item => { %>
                     <tr>
-                        <td><%= item.aktivasi_IDR %></td>
-                        <td><%= item.deaktivasi_IDR %></td>
-                        <td><%= item.aktivasi_USD %></td>
-                        <td><%= item.deaktivasi_USD %></td>
+                        <td>Rp. <%= item.aktivasi_IDR %></td>
+                        <td>Rp. <%= item.deaktivasi_IDR %></td>
+                        <td>$ <%= item.aktivasi_USD %></td>
+                        <td>$ <%= item.deaktivasi_USD %></td>
                         <td>
-                            <%= item.awal_periode.toISOString().substring(0, 10)
-                            %>
+                            <%=
+                            item.awal_periode.toLocaleDateString().substring(0,
+                            10) %>
                         </td>
                         <td>
-                            <%= item.akhir_periode.toISOString().substring(0,
+                            <%=
+                            item.akhir_periode.toLocaleDateString().substring(0,
                             10) %>
                         </td>
                         <td>
