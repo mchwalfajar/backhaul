@@ -15,7 +15,7 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous" />
     </head>
-    <body>
+    <body class="home">
         <div class="Carrousel-container">
             <div
                 id="carouselExampleCaptions"
@@ -50,20 +50,22 @@
                             alt="..."
                             style="height: 1015px" />
                         <div class="carousel-caption">
-                            <h1><%= maintenanceItem1.maintenance %></h1>
+                            <h1><b><%= maintenanceItem1.maintenance %></b></h1>
                             <h5><%= maintenanceItem1.detail %></h5>
                             <h4>-----------------</h4>
                             <h4>Downtime pada:</h4>
                             <h4>
-                                <%=
-                                formatDate(maintenanceItem1.awal_tanggal_downtime)
-                                %> jam <%=
-                                maintenanceItem1.awal_jam_downtime.substring(0,
-                                5) %> WIB - <%=
-                                formatDate(maintenanceItem1.akhir_tanggal_downtime)
-                                %> jam <%=
-                                maintenanceItem1.akhir_jam_downtime.substring(0,
-                                5 )%> WIB
+                                <b>
+                                    <%=
+                                    formatDate(maintenanceItem1.awal_tanggal_downtime)
+                                    %> jam <%=
+                                    maintenanceItem1.awal_jam_downtime.substring(0,
+                                    5) %> WIB - <%=
+                                    formatDate(maintenanceItem1.akhir_tanggal_downtime)
+                                    %> jam <%=
+                                    maintenanceItem1.akhir_jam_downtime.substring(0,
+                                    5 )%> WIB
+                                </b>
                             </h4>
                         </div>
                     </div>
@@ -74,20 +76,22 @@
                             alt="..."
                             style="height: 1015px" />
                         <div class="carousel-caption d-none d-md-block">
-                            <h1><%= maintenanceItem2.maintenance %></h1>
+                            <h1><b><%= maintenanceItem2.maintenance %></b></h1>
                             <h5><%= maintenanceItem2.detail %></h5>
                             <h4>-----------------</h4>
                             <h4>Downtime pada:</h4>
                             <h4>
-                                <%=
-                                formatDate(maintenanceItem2.awal_tanggal_downtime)
-                                %> jam <%=
-                                maintenanceItem2.awal_jam_downtime.substring(0,
-                                5) %> WIB - <%=
-                                formatDate(maintenanceItem2.akhir_tanggal_downtime)
-                                %> jam <%=
-                                maintenanceItem2.akhir_jam_downtime.substring(0,
-                                5 )%> WIB
+                                <b>
+                                    <%=
+                                    formatDate(maintenanceItem2.awal_tanggal_downtime)
+                                    %> jam <%=
+                                    maintenanceItem2.awal_jam_downtime.substring(0,
+                                    5) %> WIB - <%=
+                                    formatDate(maintenanceItem2.akhir_tanggal_downtime)
+                                    %> jam <%=
+                                    maintenanceItem2.akhir_jam_downtime.substring(0,
+                                    5 )%> WIB
+                                </b>
                             </h4>
                         </div>
                     </div>
@@ -98,20 +102,22 @@
                             alt="..."
                             style="height: 1015px" />
                         <div class="carousel-caption d-none d-md-block">
-                            <h1><%= maintenanceItem3.maintenance %></h1>
+                            <h1><b><%= maintenanceItem3.maintenance %></b></h1>
                             <h5><%= maintenanceItem3.detail %></h5>
                             <h4>-----------------</h4>
                             <h4>Downtime pada:</h4>
                             <h4>
-                                <%=
-                                formatDate(maintenanceItem3.awal_tanggal_downtime)
-                                %> jam <%=
-                                maintenanceItem3.awal_jam_downtime.substring(0,
-                                5) %> WIB - <%=
-                                formatDate(maintenanceItem3.akhir_tanggal_downtime)
-                                %> jam <%=
-                                maintenanceItem3.akhir_jam_downtime.substring(0,
-                                5 )%> WIB
+                                <b>
+                                    <%=
+                                    formatDate(maintenanceItem3.awal_tanggal_downtime)
+                                    %> jam <%=
+                                    maintenanceItem3.awal_jam_downtime.substring(0,
+                                    5) %> WIB - <%=
+                                    formatDate(maintenanceItem3.akhir_tanggal_downtime)
+                                    %> jam <%=
+                                    maintenanceItem3.akhir_jam_downtime.substring(0,
+                                    5 )%> WIB
+                                </b>
                             </h4>
                         </div>
                     </div>
@@ -143,18 +149,24 @@
         <!-- End of Carrousel -->
 
         <!-- Running Text -->
-        <marquee behavior="scroll" direction="left">
+
+        <marquee behavior="scroll" direction="left" class="running">
             <h1>
                 <h1>
                     <% function formatDate(dateString) { const options = { year:
                     'numeric', month: 'long', day: 'numeric' }; return new
                     Date(dateString).toLocaleDateString('id-ID', options); } %>
                     <% inmarsatItems.forEach(item => { %> Update kurs jual
-                    INMARSAT periode <%= formatDate(item.awal_periode) %> - <%=
-                    formatDate(item.akhir_periode) %>. Biaya Aktivasi Inmarsat
-                    Rp. <%= item.aktivasi_IDR %> atau $<%= item.aktivasi_USD %>
-                    & Biaya Deaktivasi Inmarsat Rp. <%= item.deaktivasi_IDR %>
-                    atau $<%= item.deaktivasi_USD %> (Inc. PPn 11%)<% }); %>
+                    INMARSAT periode
+                    <b>
+                        <%= formatDate(item.awal_periode) %> - <%=
+                        formatDate(item.akhir_periode) %>.
+                    </b>
+                    Biaya Aktivasi Inmarsat
+                    <b> Rp. <%= item.aktivasi_IDR %> </b> atau
+                    <b> $<%= item.aktivasi_USD %></b> & Biaya Deaktivasi
+                    Inmarsat <b> Rp. <%= item.deaktivasi_IDR %> </b> atau
+                    <b>$<%= item.deaktivasi_USD %> </b> (Inc. PPn 11%)<% }); %>
                 </h1>
             </h1>
         </marquee>

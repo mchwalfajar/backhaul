@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+* {
+    font-family: "Montserrat", sans-serif;
+}
 .carousel-caption {
     top: 300px;
     bottom: auto;
@@ -13,5 +18,13 @@ a:hover {
 }
 
 a {
-    color: rgb(133, 47, 133);
+    color: rgb(0, 0, 0);
+}
+
+.running {
+    color: ghostwhite;
+}
+
+.home {
+    background-color: rgb(0, 0, 0);
 }
