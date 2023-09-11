@@ -2,9 +2,9 @@ const express = require("express")
 const mysql = require("mysql")
 const bodyParser = require("body-parser")
 const app = express()
-const port = 3002
+
 const ipAddress = "192.168.1.8"
-app.use("/public", express.static("public"))
+const port = 3002
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -21,6 +21,7 @@ db.connect((err) => {
 // Middleware parse req
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
+app.use("/public", express.static("public"))
 
 app.get("/home", (req, res) => {
     db.query("SELECT * FROM maintenance LIMIT 3", (err, maintenanceResults) => {
@@ -178,6 +179,7 @@ app.get("/delete/inmarsat/:id", (req, res) => {
     })
 })
 
+// App listen
 app.listen(port, ipAddress, () => {
     console.log(`Server is running on http://${ipAddress}:${port}`)
 })
