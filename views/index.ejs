@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container mt-5">
-            <h1 class="text-center"><a href="/home">NMC Announcer</a></h1>
+            <h1 class="text-center"><a href="/home">Announcer</a></h1>
 
             <!-- <h2 class="mt-4">Maintenance</h2> -->
             <a class="btn btn-primary mb-2" href="/add/maintenance"
@@ -76,8 +76,10 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Aktivasi</th>
-                        <th>Deaktivasi</th>
+                        <th>Aktivasi IDR</th>
+                        <th>Deaktivasi IDR</th>
+                        <th>Aktivasi USD</th>
+                        <th>Deaktivasi USD</th>
                         <th>Awal Periode</th>
                         <th>Akhir Periode</th>
                         <th>Action</th>
@@ -86,8 +88,10 @@
                 <tbody>
                     <% inmarsatItems.forEach(item => { %>
                     <tr>
-                        <td><%= item.aktivasi %></td>
-                        <td><%= item.deaktivasi %></td>
+                        <td><%= item.aktivasi_IDR %></td>
+                        <td><%= item.deaktivasi_IDR %></td>
+                        <td><%= item.aktivasi_USD %></td>
+                        <td><%= item.deaktivasi_USD %></td>
                         <td>
                             <%= item.awal_periode.toISOString().substring(0, 10)
                             %>

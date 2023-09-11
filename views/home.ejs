@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>NMC Announcer</title>
+        <title>Announcer</title>
         <link
             rel="stylesheet"
             type="text/css"
@@ -148,10 +148,11 @@
                     'numeric', month: 'long', day: 'numeric' }; return new
                     Date(dateString).toLocaleDateString('id-ID', options); } %>
                     <% inmarsatItems.forEach(item => { %> Update kurs jual
-                    Inmarsat periode <%= formatDate(item.awal_periode) %> - <%=
+                    INMARSAT periode <%= formatDate(item.awal_periode) %> - <%=
                     formatDate(item.akhir_periode) %>. Biaya Aktivasi Inmarsat
-                    Rp. <%= item.aktivasi %> & Biaya Deaktivasi Inmarsat Rp. <%=
-                    item.deaktivasi %> <% }); %>
+                    Rp. <%= item.aktivasi_IDR %> atau $<%= item.aktivasi_USD %>
+                    & Biaya Deaktivasi Inmarsat Rp. <%= item.deaktivasi_IDR %>
+                    atau $<%= item.deaktivasi_USD %> (Inc. PPn 11%)<% }); %>
                 </h1>
             </h1>
         </marquee>

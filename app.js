@@ -3,6 +3,7 @@ const mysql = require("mysql")
 const bodyParser = require("body-parser")
 const app = express()
 const port = 3002
+const ipAddress = "192.168.1.8"
 app.use("/public", express.static("public"))
 
 const db = mysql.createConnection({
@@ -128,12 +129,12 @@ app.get("/add/inmarsat", (req, res) => {
 
 app.post("/add/inmarsat", (req, res) => {
     const newItem = {
-        aktivasi: req.body.aktivasi,
-        deaktivasi: req.body.deaktivasi,
-        awal_tanggal_downtime: req.body.awal_tanggal_downtime,
-        awal_jam_downtime: req.body.awal_jam_downtime,
-        akhir_tanggal_downtime: req.body.akhir_tanggal_downtime,
-        akhir_jam_downtime: req.body.akhir_jam_downtime,
+        aktivasi_IDR: req.body.aktivasi_IDR,
+        deaktivasi_IDR: req.body.deaktivasi_IDR,
+        aktivasi_USD: req.body.aktivasi_USD,
+        deaktivasi_USD: req.body.deaktivasi_USD,
+        awal_periode: req.body.awal_periode,
+        akhir_periode: req.body.akhir_periode,
     }
     db.query("INSERT INTO inmarsat SET ?", newItem, (err, result) => {
         if (err) throw err
@@ -152,8 +153,10 @@ app.get("/edit/inmarsat/:id", (req, res) => {
 app.post("/edit/inmarsat/:id", (req, res) => {
     const itemId = req.params.id
     const updatedItem = {
-        aktivasi: req.body.aktivasi,
-        deaktivasi: req.body.deaktivasi,
+        aktivasi_IDR: req.body.aktivasi_IDR,
+        deaktivasi_IDR: req.body.deaktivasi_IDR,
+        aktivasi_USD: req.body.aktivasi_USD,
+        deaktivasi_USD: req.body.deaktivasi_USD,
         awal_periode: req.body.awal_periode,
         akhir_periode: req.body.akhir_periode,
     }
@@ -175,6 +178,6 @@ app.get("/delete/inmarsat/:id", (req, res) => {
     })
 })
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
+app.listen(port, ipAddress, () => {
+    console.log(`Server is running on http://${ipAddress}:${port}`)
 })

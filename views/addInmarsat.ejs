@@ -18,21 +18,39 @@
             <h1>Tambah Inmarsat</h1>
             <form method="post" action="/add/inmarsat">
                 <div class="form-group">
-                    <label for="aktivasi">Aktivasi:</label>
+                    <label for="aktivasi_IDR">Aktivasi IDR:</label>
                     <input
                         type="text"
                         class="form-control"
-                        id="aktivasi"
-                        name="aktivasi"
+                        id="aktivasi_IDR"
+                        name="aktivasi_IDR"
                         required />
                 </div>
                 <div class="form-group">
-                    <label for="deaktivasi">Deaktivasi:</label>
+                    <label for="deaktivasi_IDR">Deaktivasi IDR:</label>
                     <input
                         type="text"
                         class="form-control"
-                        id="deaktivasi"
-                        name="deaktivasi"
+                        id="deaktivasi_IDR"
+                        name="deaktivasi_IDR"
+                        required />
+                </div>
+                <div class="form-group">
+                    <label for="aktivasi_USD">Aktivasi USD:</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="aktivasi_USD"
+                        name="aktivasi_USD"
+                        required />
+                </div>
+                <div class="form-group">
+                    <label for="deaktivasi_USD">Deaktivasi USD:</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="deaktivasi_USD"
+                        name="deaktivasi_USD"
                         required />
                 </div>
                 <div class="form-group">
@@ -53,9 +71,11 @@
                         name="akhir_periode"
                         required />
                 </div>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="/" class="btn btn-secondary mt-2">Kembali</a>
+                <button type="submit" class="btn btn-primary mt-2">
+                    Simpan
+                </button>
             </form>
-            <a href="/" class="btn btn-secondary mt-3">Kembali</a>
         </div>
     </body>
 </html>

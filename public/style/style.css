@@ -9,8 +9,9 @@
 
 a:hover {
     text-decoration: none;
+    color: burlywood;
 }
 
 a {
-    color: black;
+    color: rgb(133, 47, 133);
 }
