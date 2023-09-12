@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Edit Inmarsat</title>
-        <!-- Link ke Bootstrap CSS -->
+
         <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
@@ -24,6 +24,7 @@
                         class="form-control"
                         id="aktivasi_IDR"
                         name="aktivasi_IDR"
+                        style="width: 300px"
                         value="<%= item.aktivasi_IDR %>"
                         required />
                 </div>
@@ -34,6 +35,7 @@
                         class="form-control"
                         id="deaktivasi_IDR"
                         name="deaktivasi_IDR"
+                        style="width: 300px"
                         value="<%= item.deaktivasi_IDR %>"
                         required />
                 </div>
@@ -44,6 +46,7 @@
                         class="form-control"
                         id="aktivasi_USD"
                         name="aktivasi_USD"
+                        style="width: 300px"
                         value="<%= item.aktivasi_USD %>"
                         required />
                 </div>
@@ -54,6 +57,7 @@
                         class="form-control"
                         id="deaktivasi_USD"
                         name="deaktivasi_USD"
+                        style="width: 300px"
                         value="<%= item.deaktivasi_USD %>"
                         required />
                 </div>
@@ -64,6 +68,7 @@
                         class="form-control"
                         id="awal_periode"
                         name="awal_periode"
+                        style="width: 170px"
                         value="<%= item.awal_periode.toISOString().substring(0, 10) %>"
                         required />
                 </div>
@@ -74,6 +79,7 @@
                         class="form-control"
                         id="akhir_periode"
                         name="akhir_periode"
+                        style="width: 170px"
                         value="<%= item.akhir_periode.toISOString().substring(0, 10) %>"
                         required />
                 </div>

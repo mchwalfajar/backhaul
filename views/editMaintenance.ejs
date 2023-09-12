@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Edit Maintenance</title>
-        <!-- Link ke Bootstrap CSS -->
+
         <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
@@ -18,64 +18,68 @@
             <h1>Edit Maintenance</h1>
             <form method="post" action="/edit/maintenance/<%= item.id %>">
                 <div class="form-group">
-                    <label for="maintenance">Maintenance:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="maintenance"
+                    <label for="maintenance">Maintenance</label><br />
+                    <textarea
                         name="maintenance"
+                        id="maintenance"
+                        cols="60"
+                        rows="3"
                         value="<%= item.maintenance %>"
-                        required />
+                        required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="detail">Detail:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="detail"
+                    <label for="detail">Detail</label><br />
+                    <textarea
                         name="detail"
+                        id="detail"
+                        cols="60"
+                        rows="5"
                         value="<%= item.detail %>"
-                        required />
+                        required></textarea>
                 </div>
-                <div class="form-group">
+                <div class="waktu-maintenance">
                     <label for="awal_tanggal_downtime"
-                        >Awal Tanggal Downtime:</label
+                        >Awal Tanggal Downtime</label
                     >
                     <input
                         type="date"
                         class="form-control"
                         id="awal_tanggal_downtime"
                         name="awal_tanggal_downtime"
+                        style="width: 300px"
                         required />
                 </div>
-                <div class="form-group">
-                    <label for="awal_jam_downtime">Awal Jam Downtime:</label>
+                <div class="waktu-maintenance">
+                    <label for="awal_jam_downtime">Awal Jam Downtime</label>
                     <input
                         type="time"
                         class="form-control"
                         id="awal_jam_downtime"
                         name="awal_jam_downtime"
-                        required />
+                        required
+                        style="width: 300px" />
                 </div>
-                <div class="form-group">
+                <div class="waktu">
                     <label for="akhir_tanggal_downtime"
-                        >Akhir Tanggal Downtime:</label
+                        >Akhir Tanggal Downtime</label
                     >
                     <input
                         type="date"
                         class="form-control"
                         id="akhir_tanggal_downtime"
                         name="akhir_tanggal_downtime"
+                        style="width: 300px"
                         required />
                 </div>
-                <div class="form-group">
-                    <label for="akhir_jam_downtime">Akhir Jam Downtime:</label>
+                <div class="waktu">
+                    <label for="akhir_jam_downtime">Akhir Jam Downtime</label>
                     <input
                         type="time"
                         class="form-control"
                         id="akhir_jam_downtime"
                         name="akhir_jam_downtime"
-                        required />
+                        required
+                        style="width: 300px" />
                 </div>
                 <a href="/" class="btn btn-secondary mt-2">Kembali</a>
                 <button type="submit" class="btn btn-primary mt-2">

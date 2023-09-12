@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tambah Maintenance</title>
-        <!-- Link ke Bootstrap CSS -->
+        <title>Add Maintenance</title>
+
         <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
@@ -15,29 +15,30 @@
     </head>
     <body>
         <div class="container mt-5">
-            <h1>Tambah Maintenance</h1>
+            <h1>Add Maintenance</h1>
             <form method="post" action="/add/maintenance">
                 <div class="input-field">
-                    <label for="maintenance">Maintenance:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="maintenance"
+                    <label for="maintenance">Maintenance</label><br />
+                    <textarea
                         name="maintenance"
-                        required />
+                        id="maintenance"
+                        cols="60"
+                        rows="3"
+                        required>
+                    </textarea>
                 </div>
                 <div class="input-field">
-                    <label for="detail">Detail:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="detail"
+                    <label for="detail">Detail</label><br />
+                    <textarea
                         name="detail"
-                        required />
+                        id="detail"
+                        cols="60"
+                        rows="5"
+                        required></textarea>
                 </div>
-                <div class="input-field">
+                <div class="waktu">
                     <label for="awal_tanggal_downtime"
-                        >Awal Tanggal Downtime:</label
+                        >Awal Tanggal Downtime</label
                     >
                     <input
                         type="date"
@@ -46,8 +47,8 @@
                         name="awal_tanggal_downtime"
                         required />
                 </div>
-                <div class="input-field">
-                    <label for="awal_jam_downtime">Awal Jam Downtime:</label>
+                <div class="waktu">
+                    <label for="awal_jam_downtime">Awal Jam Downtime</label>
                     <input
                         type="time"
                         class="form-control"
@@ -55,9 +56,9 @@
                         name="awal_jam_downtime"
                         required />
                 </div>
-                <div class="input-field">
+                <div class="waktu">
                     <label for="akhir_tanggal_downtime"
-                        >Akhir Tanggal Downtime:</label
+                        >Akhir Tanggal Downtime</label
                     >
                     <input
                         type="date"
@@ -66,8 +67,8 @@
                         name="akhir_tanggal_downtime"
                         required />
                 </div>
-                <div class="input-field">
-                    <label for="akhir_jam_downtime">Akhir Jam Downtime:</label>
+                <div class="waktu">
+                    <label for="akhir_jam_downtime">Akhir Jam Downtime</label>
                     <input
                         type="time"
                         class="form-control"
