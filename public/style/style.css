@@ -36,3 +36,7 @@ a {
 .inmarsat-add {
     width: 400px;
 }
+
+.navbar {
+    border-radius: 20px;
+}
