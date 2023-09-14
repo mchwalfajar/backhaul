@@ -18,11 +18,12 @@ db.connect((err) => {
     console.log("Database connected")
 })
 
-// Middleware parse req
+// Middleware Parse Request
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
 app.use("/public", express.static("public"))
 
+// Index View
 app.get("/home", (req, res) => {
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
         if (err) throw err
@@ -59,7 +60,7 @@ app.get("/", (req, res) => {
     })
 })
 
-// Maintenance Routing
+// Maintenance Route
 app.get("/add/maintenance", (req, res) => {
     res.render("addMaintenance")
 })
@@ -123,7 +124,7 @@ app.get("/delete/maintenance/:id", (req, res) => {
     })
 })
 
-// Inmarsat Routing
+// Inmarsat Route
 app.get("/add/inmarsat", (req, res) => {
     res.render("addInmarsat")
 })
