@@ -24,7 +24,7 @@ app.set("view engine", "ejs")
 app.use("/public", express.static("public"))
 
 app.get("/home", (req, res) => {
-    db.query("SELECT * FROM maintenance LIMIT 3", (err, maintenanceResults) => {
+    db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
         if (err) throw err
 
         db.query("SELECT * FROM inmarsat", (err, inmarsatResults) => {
