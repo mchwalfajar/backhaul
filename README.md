@@ -4,3 +4,4 @@ npm prerequisites:
 2. body-parser
 3. ejs
 4. mysql
+5. pm2
