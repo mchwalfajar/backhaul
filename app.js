@@ -3,7 +3,7 @@ const mysql = require("mysql")
 const bodyParser = require("body-parser")
 const app = express()
 
-const ipAddress = "192.168.1.8"
+const ipAddress = "localhost"
 const port = 3002
 
 const db = mysql.createConnection({
