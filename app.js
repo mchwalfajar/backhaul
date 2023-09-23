@@ -3,7 +3,7 @@ const mysql = require("mysql")
 const bodyParser = require("body-parser")
 const app = express()
 
-const ipAddress = "localhost"
+const ipAddress = "192.168.76.72"
 const port = 3002
 
 const db = mysql.createConnection({
@@ -24,7 +24,7 @@ app.set("view engine", "ejs")
 app.use("/public", express.static("public"))
 
 // Index View
-app.get("/home", (req, res) => {
+app.get("/announcer", (req, res) => {
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
         if (err) throw err
 
@@ -45,7 +45,7 @@ app.get("/home", (req, res) => {
     })
 })
 
-app.get("/", (req, res) => {
+app.get("/announcer/index", (req, res) => {
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
         if (err) throw err
 
