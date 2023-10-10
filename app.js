@@ -23,11 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
 app.use("/public", express.static("public"))
 
-<<<<<<< HEAD
 // Carrousel View
-=======
-// Index View
->>>>>>> abfe1e00d5fb4039b44c3818bf26cb2341bb138c
 app.get("/announcer", (req, res) => {
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
         if (err) throw err
@@ -49,6 +45,7 @@ app.get("/announcer", (req, res) => {
     })
 })
 
+// Index View
 app.get("/announcer/index", (req, res) => {
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
         if (err) throw err
