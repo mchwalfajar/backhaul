@@ -1,5 +1,5 @@
 const express = require("express")
-const mysql = require("mysql")
+const mysql = require("mysql2")
 const bodyParser = require("body-parser")
 const app = express()
 
@@ -14,7 +14,7 @@ const db = mysql.createConnection({
 })
 
 db.connect((err) => {
-    if (err) throw err
+    if (err) throw err 
     console.log("Database connected")
 })
 
@@ -23,8 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
 app.use("/public", express.static("public"))
 
-// Index View
-app.get("/home", (req, res) => {
+// Carrousel View
+app.get("/announcer", (req, res) => {
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
         if (err) throw err
 
@@ -45,7 +45,7 @@ app.get("/home", (req, res) => {
     })
 })
 
-app.get("/", (req, res) => {
+app.get("/announcer/index", (req, res) => {
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
         if (err) throw err
 
@@ -80,7 +80,7 @@ app.post("/add/maintenance", (req, res) => {
             res.status(500).send("fail add maintenance data")
             return
         }
-        res.redirect("/")
+        res.redirect("/announcer/index")
     })
 })
 
@@ -111,7 +111,7 @@ app.post("/edit/maintenance/:id", (req, res) => {
         [updatedItem, itemId],
         (err, result) => {
             if (err) throw err
-            res.redirect("/")
+            res.redirect("/announcer/index")
         }
     )
 })
@@ -120,7 +120,7 @@ app.get("/delete/maintenance/:id", (req, res) => {
     const itemId = req.params.id
     db.query("DELETE FROM maintenance WHERE id = ?", itemId, (err, result) => {
         if (err) throw err
-        res.redirect("/")
+        res.redirect("/announcer/index")
     })
 })
 
@@ -140,7 +140,7 @@ app.post("/add/inmarsat", (req, res) => {
     }
     db.query("INSERT INTO inmarsat SET ?", newItem, (err, result) => {
         if (err) throw err
-        res.redirect("/")
+        res.redirect("/announcer/index")
     })
 })
 
@@ -167,7 +167,7 @@ app.post("/edit/inmarsat/:id", (req, res) => {
         [updatedItem, itemId],
         (err, result) => {
             if (err) throw err
-            res.redirect("/")
+            res.redirect("/announcer/index")
         }
     )
 })
@@ -176,7 +176,7 @@ app.get("/delete/inmarsat/:id", (req, res) => {
     const itemId = req.params.id
     db.query("DELETE FROM inmarsat WHERE id = ?", itemId, (err, result) => {
         if (err) throw err
-        res.redirect("/")
+        res.redirect("/announcer/index")
     })
 })
 
