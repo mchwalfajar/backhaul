@@ -13,23 +13,32 @@ const db = mysql.createConnection({
     database: "nmc-news",
 })
 
+// Middleware Parse Request
+app.use(bodyParser.urlencoded({ extended: true }))
+// Middleware view engine
+app.set("view engine", "ejs")
+app.use("/public", express.static("public"))
+
 db.connect((err) => {
     if (err) throw err 
     console.log("Database connected")
 })
 
-// Middleware Parse Request
-app.use(bodyParser.urlencoded({ extended: true }))
-app.set("view engine", "ejs")
-app.use("/public", express.static("public"))
-
 // Carrousel View
 app.get("/announcer", (req, res) => {
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
-        if (err) throw err
+        if (err) {
+            console.error("Error querying maintenance data:", err)
+            res.status(500).send("Internal Server Error")
+            return
+        }
 
         db.query("SELECT * FROM inmarsat", (err, inmarsatResults) => {
-            if (err) throw err
+            if (err) {
+                console.error("Error querying Inmarsat data:",err)
+                res.status(500).send('Internal Server Error')
+                return
+            }
 
             res.render("home", {
                 maintenanceItems: maintenanceResults,
@@ -43,10 +52,18 @@ app.get("/announcer", (req, res) => {
 app.get("/announcer/index", (req, res) => {
     
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
-        if (err) throw err
+        if (err) {
+            console.error("Error querying maintenance data:", err)
+            res.status(500).send("Internal Server Error")
+            return
+        }
 
         db.query("SELECT * FROM inmarsat", (err, inmarsatResults) => {
-            if (err) throw err
+            if (err) {
+                console.error("Error querying Inmarsat data:",err)
+                res.status(500).send('Internal Server Error')
+                return
+            }
 
             res.render("index", {
                 maintenanceItems: maintenanceResults,
@@ -73,7 +90,7 @@ app.post("/add/maintenance", (req, res) => {
     db.query("INSERT INTO maintenance SET ?", newItem, (err, result) => {
         if (err) {
             console.error(err)
-            res.status(500).send("fail add maintenance data")
+            res.status(500).send("fail to add maintenance data")
             return
         }
         res.redirect("/announcer/index")
@@ -86,7 +103,11 @@ app.get("/edit/maintenance/:id", (req, res) => {
         "SELECT * FROM maintenance WHERE id = ?",
         itemId,
         (err, result) => {
-            if (err) throw err
+            if (err) {
+                console.error("Error querying maintenance data for edit:", err);
+                res.status(500).send("Internal Server Error");
+                return;
+            }
             res.render("editMaintenance", { item: result[0] })
         }
     )
@@ -106,7 +127,11 @@ app.post("/edit/maintenance/:id", (req, res) => {
         "UPDATE maintenance SET ? WHERE id = ?",
         [updatedItem, itemId],
         (err, result) => {
-            if (err) throw err
+            if (err) {
+                console.error("Error updating maintenance data:", err);
+                res.status(500).send("Fail to update maintenance data");
+                return;
+            }
             res.redirect("/announcer/index")
         }
     )
@@ -115,7 +140,11 @@ app.post("/edit/maintenance/:id", (req, res) => {
 app.get("/delete/maintenance/:id", (req, res) => {
     const itemId = req.params.id
     db.query("DELETE FROM maintenance WHERE id = ?", itemId, (err, result) => {
-        if (err) throw err
+        if (err) {
+            console.error("Error deleting maintenance data:", err);
+            res.status(500).send("Fail to delete maintenance data");
+            return;
+        }
         res.redirect("/announcer/index")
     })
 })
@@ -135,7 +164,11 @@ app.post("/add/inmarsat", (req, res) => {
         akhir_periode: req.body.akhir_periode,
     }
     db.query("INSERT INTO inmarsat SET ?", newItem, (err, result) => {
-        if (err) throw err
+        if (err) {
+            console.error("Error inserting inmarsat data:", err);
+            res.status(500).send("Fail to add inmarsat data");
+            return;
+        }
         res.redirect("/announcer/index")
     })
 })
@@ -143,7 +176,11 @@ app.post("/add/inmarsat", (req, res) => {
 app.get("/edit/inmarsat/:id", (req, res) => {
     const itemId = req.params.id
     db.query("SELECT * FROM inmarsat WHERE id = ?", itemId, (err, result) => {
-        if (err) throw err
+        if (err) {
+            console.error("Error querying inmarsat data for edit:", err);
+            res.status(500).send("Internal Server Error");
+            return;
+        }
         res.render("editInmarsat", { item: result[0] })
     })
 })
@@ -162,7 +199,11 @@ app.post("/edit/inmarsat/:id", (req, res) => {
         "UPDATE inmarsat SET ? WHERE id = ?",
         [updatedItem, itemId],
         (err, result) => {
-            if (err) throw err
+            if (err) {
+                console.error("Error updating inmarsat data:", err);
+                res.status(500).send("Fail to update inmarsat data");
+                return;
+            }
             res.redirect("/announcer/index")
         }
     )
@@ -171,7 +212,11 @@ app.post("/edit/inmarsat/:id", (req, res) => {
 app.get("/delete/inmarsat/:id", (req, res) => {
     const itemId = req.params.id
     db.query("DELETE FROM inmarsat WHERE id = ?", itemId, (err, result) => {
-        if (err) throw err
+        if (err) {
+            console.error("Error deleting inmarsat data:", err);
+            res.status(500).send("Fail to delete inmarsat data");
+            return;
+        }
         res.redirect("/announcer/index")
     })
 })
