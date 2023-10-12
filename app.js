@@ -3,7 +3,7 @@ const mysql = require("mysql2")
 const bodyParser = require("body-parser")
 const app = express()
 
-const ipAddress = "192.168.76.72"
+const ipAddress = "localhost"
 const port = 3002
 
 const db = mysql.createConnection({
@@ -31,14 +31,8 @@ app.get("/announcer", (req, res) => {
         db.query("SELECT * FROM inmarsat", (err, inmarsatResults) => {
             if (err) throw err
 
-            const maintenanceItem1 = maintenanceResults[0]
-            const maintenanceItem2 = maintenanceResults[1]
-            const maintenanceItem3 = maintenanceResults[2]
-
             res.render("home", {
-                maintenanceItem1,
-                maintenanceItem2,
-                maintenanceItem3,
+                maintenanceItems: maintenanceResults,
                 inmarsatItems: inmarsatResults,
             })
         })
@@ -47,6 +41,7 @@ app.get("/announcer", (req, res) => {
 
 // Index View
 app.get("/announcer/index", (req, res) => {
+    
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
         if (err) throw err
 
