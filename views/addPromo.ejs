@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Announcer · Add Promo Data</title>
+        <link
+            rel="icon"
+            href="../public/img/psn-logo.jpeg"
+            type="image/x-icon" />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../public/style/style.css" />
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h1>Add Promo</h1>
+            <form method="post" action="/add/promo">
+                <div class="promo-add">
+                    <label for="promo">Promo</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="promo"
+                        name="promo"
+                        required />
+                </div>
+                <div class="promo-add">
+                    <label for="detail">Detail</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="detail"
+                        name="detail"
+                        required />
+                </div>
+                <div class="waktu">
+                    <label for="awal_promo">Awal Promo</label>
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="awal_promo"
+                        name="awal_promo"
+                        required />
+                </div>
+                <div class="waktu">
+                    <label for="akhir_promo">Akhir Promo</label>
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="akhir_promo"
+                        name="akhir_promo"
+                        required />
+                </div>
+                <a href="/announcer/index" class="btn btn-secondary mt-2">Kembali</a>
+                <button type="submit" class="btn btn-primary mt-2">
+                    Simpan
+                </button>
+            </form>
+        </div>
+    </body>
+</html>

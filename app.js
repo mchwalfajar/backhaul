@@ -4,7 +4,7 @@ const bodyParser = require("body-parser")
 const app = express()
 
 const ipAddress = "localhost"
-const port = 3002
+const port = 3005
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -12,7 +12,6 @@ const db = mysql.createConnection({
     password: "",
     database: "nmc-news",
 })
-
 // Middleware Parse Request
 app.use(bodyParser.urlencoded({ extended: true }))
 // Middleware view engine
@@ -25,7 +24,7 @@ db.connect((err) => {
 })
 
 // Carrousel View
-app.get("/announcer", (req, res) => {
+app.get("/announcer/maintenance", (req, res) => {
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
         if (err) {
             console.error("Error querying maintenance data:", err)
@@ -35,22 +34,44 @@ app.get("/announcer", (req, res) => {
 
         db.query("SELECT * FROM inmarsat", (err, inmarsatResults) => {
             if (err) {
-                console.error("Error querying Inmarsat data:",err)
+                console.error("Error querying Inmarsat data:", err)
                 res.status(500).send('Internal Server Error')
                 return
             }
 
-            res.render("home", {
+        res.render("maintenance", {
                 maintenanceItems: maintenanceResults,
                 inmarsatItems: inmarsatResults,
-            })
-        })
-    })
-})
+                })
+            });
+        });
+    });
+
+app.get("/announcer/promo", (req, res) => {
+    db.query("SELECT * FROM promo", (err, promoResults) => {
+        if (err) {
+            console.error("Error querying promo data:", err)
+            res.status(500).send("Internal Server Error")
+            return
+        }
+
+        db.query("SELECT * FROM inmarsat", (err, inmarsatResults) => {
+            if (err) {
+                console.error("Error querying Inmarsat data:", err)
+                res.status(500).send('Internal Server Error')
+                return
+            }
+            
+            res.render("promo", {
+                promoItems: promoResults,
+                inmarsatItems: inmarsatResults,
+            });       
+        });
+    });
+});
 
 // Index View
 app.get("/announcer/index", (req, res) => {
-    
     db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
         if (err) {
             console.error("Error querying maintenance data:", err)
@@ -60,18 +81,27 @@ app.get("/announcer/index", (req, res) => {
 
         db.query("SELECT * FROM inmarsat", (err, inmarsatResults) => {
             if (err) {
-                console.error("Error querying Inmarsat data:",err)
+                console.error("Error querying Inmarsat data:", err)
                 res.status(500).send('Internal Server Error')
                 return
             }
 
-            res.render("index", {
-                maintenanceItems: maintenanceResults,
-                inmarsatItems: inmarsatResults,
-            })
-        })
-    })
-})
+            db.query("SELECT * FROM promo", (err, promoResults) => {
+                if (err) {
+                    console.error("Error querying promo data:", err)
+                    res.status(500).send('Internal Server Error')
+                    return
+                }
+
+                res.render("index", {
+                    maintenanceItems: maintenanceResults,
+                    inmarsatItems: inmarsatResults,
+                    promoItems: promoResults,
+                });
+            });
+        });
+    });
+});
 
 // Maintenance Route
 app.get("/add/maintenance", (req, res) => {
@@ -108,7 +138,7 @@ app.get("/edit/maintenance/:id", (req, res) => {
                 res.status(500).send("Internal Server Error");
                 return;
             }
-            res.render("editMaintenance", { item: result[0] })
+            res.render("editMaintenance", { item: result[0] });
         }
     )
 })
@@ -143,6 +173,75 @@ app.get("/delete/maintenance/:id", (req, res) => {
         if (err) {
             console.error("Error deleting maintenance data:", err);
             res.status(500).send("Fail to delete maintenance data");
+            return;
+        }
+        res.redirect("/announcer/index")
+    })
+})
+
+// Promo Route
+app.get("/add/promo", (req, res) => {
+    res.render("addPromo")
+})
+
+app.post("/add/promo", (req, res) => {
+    const newItem = {
+        promo: req.body.promo,
+        detail: req.body.detail,
+        awal_promo: req.body.awal_promo,
+        akhir_promo: req.body.akhir_promo,
+    }
+    db.query("INSERT INTO promo SET ?", newItem, (err, result) => {
+        if (err) {
+            console.error("Error inserting promo data:", err)
+            res.status(500).send("Fail to add promo data")
+            return
+        }
+        res.redirect("/announcer/index")
+    })
+})
+
+app.get("/edit/promo/:id", (req, res) => {
+    const itemId = req.params.id; 
+    db.query("SELECT * FROM promo WHERE id = ?", itemId, (err, result) => { 
+        if (err) {
+            console.error("Error querying promo data for edit:", err);
+            res.status(500).send("Internal Server Error");
+            return;
+        }
+        res.render("editPromo", { item: result[0] });
+    });
+});
+
+app.post("/edit/promo/:id", (req, res) => {
+    const itemId = req.params.id;
+    const updatedItem = {
+        promo: req.body.promo,
+        detail: req.body.detail,
+        awal_promo: req.body.awal_promo,
+        akhir_promo: req.body.akhir_promo
+    };
+    db.query(
+        "UPDATE promo SET ? WHERE id = ?",
+        [updatedItem, itemId],
+        (err, result) => {
+            if (err) {
+                console.error("Error updating promo data:", err);
+                res.status(500).send("Fail to update promo data");
+                return;
+            }
+            res.redirect("/announcer/index");
+        }
+    );
+});
+
+
+app.get("/delete/promo/:id", (req, res) => {
+    const itemId = req.params.id
+    db.query("DELETE FROM promo WHERE id = ?", itemId, (err, result) => {
+        if (err) {
+            console.error("Error deleting promo data:", err);
+            res.status(500).send("Fail to delete promo data");
             return;
         }
         res.redirect("/announcer/index")

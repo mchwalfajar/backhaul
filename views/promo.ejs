@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="refresh" content="300">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Announcer · Promo & Inmarsat Exchange Rate
+            Information
+        </title>
+        <link
+            rel="icon"
+            href="../public/img/psn-logo.jpeg"
+            type="image/x-icon" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../public/style/style.css" />
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous" />
+    </head>
+    <body class="announcer">
+        <div class="Carrousel-container">
+            <div
+                id="carouselExampleCaptions"
+                class="carousel slide"
+                data-bs-ride="carousel"
+                data-bs-interval="15000"
+                data-bs-pause="false">
+
+                <!-- carousel content -->
+                <div class="carousel-indicators">
+                    <% for (let i = 0; i < promoItems.length; i++) { %>
+                        <button
+                            type="button"
+                            data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide-to="<%= i %>"
+                            class="<%= i === 0 ? 'active' : '' %>"
+                            aria-current="<%= i === 0 %>"
+                            aria-label="Slide <%= i + 1 %>"></button>
+                    <% } %>
+                </div>
+                
+                <div class="carousel-inner">
+                    <% for (let i = 0; i < promoItems.length; i++) { %>
+                        <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                            <img
+                                src="../public/img/N3Launch-<%= i + 1 %>.jpeg"
+                                class="d-block w-100"
+                                alt="..."
+                                style="height: 1015px"
+                            />
+                            <div class="carousel-caption">
+                                <h1 style="font-size: 55px;"><b><%= promoItems[i].promo %></b></h1> <br>
+                                <h5 style="font-size: 27px;">
+                                    <% 
+                                    const promoDetailLines = promoItems[i].detail.split('\n');
+                                    promoDetailLines.forEach(line => {
+                                        %>
+                                        <%= line %><br>
+                                        <%
+                                    });
+                                    %>
+                                </h5><br>
+                                <h4>Promo berlaku pada:</h4>
+                                <h3 style="font-weight: bolder;">
+                                        <%= formatDate(promoItems[i].awal_promo) %> - 
+                                        <%= formatDate(promoItems[i].akhir_promo) %> 
+                                </h3>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+                
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Running Text -->
+        <marquee behavior="scroll" direction="left" class="running">
+            <h1 style="font-size: 55px;">
+                    <% function formatDate(dateString) { const options = { year:
+                    'numeric', month: 'long', day: 'numeric' }; return new
+                    Date(dateString).toLocaleDateString('id-ID', options); } %>
+                    <% inmarsatItems.forEach(item => { %> Update kurs jual
+                    INMARSAT periode
+                    <b>
+                        <%= formatDate(item.awal_periode) %> - <%=
+                        formatDate(item.akhir_periode) %>.
+                    </b>
+                    Biaya Aktivasi Inmarsat
+                    <b> Rp. <%= item.aktivasi_IDR %> </b> atau
+                    <b> $<%= item.aktivasi_USD %></b> & Biaya Deaktivasi
+                    Inmarsat <b> Rp. <%= item.deaktivasi_IDR %> </b> atau
+                    <b>$<%= item.deaktivasi_USD %> </b> (Inc. PPn 11%)<% }); %>
+            </h1>
+        </marquee>
+
+        <!-- Bootstrap CSS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+        <!-- format date on carousel section -->
+        <script>
+            function formatDate(dateString) {
+                const options = {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                }
+                return new Date(dateString).toLocaleDateString("id-ID", options)
+            }
+        </script>
+    </body>
+</html>

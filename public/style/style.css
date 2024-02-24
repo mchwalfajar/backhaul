@@ -5,29 +5,39 @@
 }
 .carousel-caption {
     top: 300px;
-    bottom: auto;
 }
 
 .carousel-item img {
     filter: brightness(0.5);
 }
 
-a:hover {
+* a:hover {
     text-decoration: none;
     color: burlywood;
-}
-
-a {
-    color: rgb(0, 0, 0);
-}
-
-.running {
-    color: ghostwhite;
 }
 
 .announcer {
     background-color: rgb(0, 0, 0);
 }
+
+/* a {
+    color: rgb(0, 0, 0);
+} */
+
+.running {
+    color: ghostwhite;
+}
+
+.navbar {
+    border-radius: 10px;
+} 
+
+th {
+    text-align: center;
+}
+
+/*
+
 
 .waktu {
     width: 250px;
@@ -37,6 +47,4 @@ a {
     width: 400px;
 }
 
-.navbar {
-    border-radius: 20px;
-}
+*/

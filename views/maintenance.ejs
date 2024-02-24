@@ -2,10 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta http-equiv="refresh" content="300">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>
-            Announcer · Maintenance Plan & Inmarsat Exchange Rate
-            Information
+            Announcer · Maintenance Plan Information
         </title>
         <link
             rel="icon"
@@ -28,7 +28,7 @@
                 id="carouselExampleCaptions"
                 class="carousel slide"
                 data-bs-ride="carousel"
-                data-bs-interval="6000"
+                data-bs-interval="15000"
                 data-bs-pause="false">
 
                 <!-- carousel content -->
@@ -53,18 +53,25 @@
                                 alt="..."
                                 style="height: 1015px"
                             />
+                            
                             <div class="carousel-caption">
-                                <h1><b><%= maintenanceItems[i].maintenance %></b></h1>
-                                <h5><%= maintenanceItems[i].detail %></h5>
-                                <h4>-----------------</h4>
+                                <h1 style="font-size: 55px;"><b><%= maintenanceItems[i].maintenance %></b></h1> <br>
+                                <h5 style="font-size: 27px;">
+                                    <% 
+                                    const maintenanceDetailLines = maintenanceItems[i].detail.split('\n');
+                                    maintenanceDetailLines.forEach(line => {
+                                        %>
+                                        <%= line %><br>
+                                        <%
+                                    });
+                                    %>
+                                </h5> <br>
                                 <h4>Pengerjaan pada:</h4>
-                                <h3>
-                                    <b>
-                                        <%= formatDate(maintenanceItems[i].awal_tanggal_downtime) %> jam
-                                        <%= maintenanceItems[i].awal_jam_downtime.substring(0, 5) %> WIB -
-                                        <%= formatDate(maintenanceItems[i].akhir_tanggal_downtime) %> jam
-                                        <%= maintenanceItems[i].akhir_jam_downtime.substring(0, 5) %> WIB
-                                    </b>
+                                <h3 style="font-weight: bolder;">
+                                    <%= new Date(maintenanceItems[i].awal_tanggal_downtime).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }) %> jam
+                                    <%= maintenanceItems[i].awal_jam_downtime.substring(0, 5) %> WIB -
+                                    <%= new Date(maintenanceItems[i].akhir_tanggal_downtime).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }) %> jam
+                                    <%= maintenanceItems[i].akhir_jam_downtime.substring(0, 5) %> WIB
                                 </h3>
                             </div>
                         </div>

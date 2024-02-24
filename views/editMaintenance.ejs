@@ -27,8 +27,7 @@
                         id="maintenance"
                         cols="60"
                         rows="3"
-                        value="<%= item.maintenance %>"
-                        required></textarea>
+                        required><%= item.maintenance %></textarea>
                 </div>
                 <div class="form-group">
                     <label for="detail">Detail</label><br />
@@ -37,8 +36,7 @@
                         id="detail"
                         cols="60"
                         rows="5"
-                        value="<%= item.detail %>"
-                        required></textarea>
+                        required><%= item.detail %></textarea>
                 </div>
                 <div class="waktu-maintenance">
                     <label for="awal_tanggal_downtime"
@@ -50,6 +48,7 @@
                         id="awal_tanggal_downtime"
                         name="awal_tanggal_downtime"
                         style="width: 300px"
+                        value="<%= item.awal_tanggal_downtime %>"
                         required />
                 </div>
                 <div class="waktu-maintenance">
@@ -59,8 +58,9 @@
                         class="form-control"
                         id="awal_jam_downtime"
                         name="awal_jam_downtime"
-                        required
-                        style="width: 300px" />
+                        style="width: 300px"
+                        value="<%= item.awal_jam_downtime %>"
+                        required />
                 </div>
                 <div class="waktu">
                     <label for="akhir_tanggal_downtime"
@@ -72,6 +72,7 @@
                         id="akhir_tanggal_downtime"
                         name="akhir_tanggal_downtime"
                         style="width: 300px"
+                        value="<%= item.akhir_tanggal_downtime %>"
                         required />
                 </div>
                 <div class="waktu">
@@ -81,8 +82,9 @@
                         class="form-control"
                         id="akhir_jam_downtime"
                         name="akhir_jam_downtime"
-                        required
-                        style="width: 300px" />
+                        style="width: 300px"
+                        value="<%= item.akhir_jam_downtime %>"
+                        required />
                 </div>
                 <a href="/announcer/index" class="btn btn-secondary mt-2">Kembali</a>
                 <button type="submit" class="btn btn-primary mt-2">
