@@ -48,8 +48,9 @@
                         id="awal_tanggal_downtime"
                         name="awal_tanggal_downtime"
                         style="width: 300px"
-                        value="<%= item.awal_tanggal_downtime %>"
+                        value="<%= item.awal_tanggal_downtime.toISOString().substring(0, 10) %>"
                         required />
+
                 </div>
                 <div class="waktu-maintenance">
                     <label for="awal_jam_downtime">Awal Jam Downtime</label>
@@ -72,8 +73,9 @@
                         id="akhir_tanggal_downtime"
                         name="akhir_tanggal_downtime"
                         style="width: 300px"
-                        value="<%= item.akhir_tanggal_downtime %>"
+                        value="<%= item.akhir_tanggal_downtime.toISOString().substring(0, 10) %>"
                         required />
+
                 </div>
                 <div class="waktu">
                     <label for="akhir_jam_downtime">Akhir Jam Downtime</label>
