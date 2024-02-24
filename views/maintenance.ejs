@@ -103,23 +103,21 @@
 
         <!-- Running Text -->
         <marquee behavior="scroll" direction="left" class="running">
-            <h1>
-                <h1>
-                    <% function formatDate(dateString) { const options = { year:
-                    'numeric', month: 'long', day: 'numeric' }; return new
-                    Date(dateString).toLocaleDateString('id-ID', options); } %>
-                    <% inmarsatItems.forEach(item => { %> Update kurs jual
-                    INMARSAT periode
-                    <b>
-                        <%= formatDate(item.awal_periode) %> - <%=
-                        formatDate(item.akhir_periode) %>.
-                    </b>
-                    Biaya Aktivasi Inmarsat
-                    <b> Rp. <%= item.aktivasi_IDR %> </b> atau
-                    <b> $<%= item.aktivasi_USD %></b> & Biaya Deaktivasi
-                    Inmarsat <b> Rp. <%= item.deaktivasi_IDR %> </b> atau
-                    <b>$<%= item.deaktivasi_USD %> </b> (Inc. PPn 11%)<% }); %>
-                </h1>
+            <h1 style="font-size: 55px;">
+                <% function formatDate(dateString) { const options = { year:
+                'numeric', month: 'long', day: 'numeric' }; return new
+                Date(dateString).toLocaleDateString('id-ID', options); } %>
+                <% inmarsatItems.forEach(item => { %> Update kurs jual
+                INMARSAT periode
+                <b>
+                    <%= formatDate(item.awal_periode) %> - <%=
+                    formatDate(item.akhir_periode) %>.
+                </b>
+                Biaya Aktivasi Inmarsat
+                <b> Rp. <%= item.aktivasi_IDR %> </b> atau
+                <b> $<%= item.aktivasi_USD %></b> & Biaya Deaktivasi
+                Inmarsat <b> Rp. <%= item.deaktivasi_IDR %> </b> atau
+                <b>$<%= item.deaktivasi_USD %> </b> (Inc. PPn 11%)<% }); %>
             </h1>
         </marquee>
 
