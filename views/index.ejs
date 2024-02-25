@@ -20,7 +20,7 @@
         <div class="container mt-3">
             <nav class="navbar" style="background-color: #e0e0e0">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="http://nmc.psn.co.id">
+                    <a class="navbar-brand" href="/announcer">
                         <img
                             src="../public/img/psn-logo.jpeg"
                             alt="Logo"
@@ -30,14 +30,10 @@
                     </a>
                 </div>
             </nav>
-
             <br />
-            <a class="btn btn-primary mb-2" href="/announcer/maintenance"
-                >Maintenance</a
-            >
-            <a class="btn btn-warning mb-2" href="/add/maintenance"
-                > Add Maintenance</a
-            >
+
+            <a class="btn btn-primary mb-2" href="/add/maintenance"
+                > Add Maintenance</a>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -73,7 +69,7 @@
                         </td>
                         <td>
                             <a
-                                class="btn btn-secondary btn-sm"
+                                class="btn btn-warning btn-sm"
                                 href="/edit/maintenance/<%= item.id %>"
                                 >Edit</a
                             >
@@ -91,12 +87,8 @@
 
             <!-- Promo -->
             <br />
-            <a class="btn btn-primary mb-2" href="/announcer/promo"
-                >Promo</a
-            >
-            <a class="btn btn-warning mb-2" href="/add/promo"
-                >Add Promo</a
-            >
+            <a class="btn btn-primary mb-2" href="/add/promo"
+                >Add Promo</a            >
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -123,7 +115,7 @@
                         </td>
                         <td>
                             <a
-                                class="btn btn-secondary btn-sm"
+                                class="btn btn-warning btn-sm"
                                 href="/edit/promo/<%= item.id %>"
                                 >Edit</a
                             >
@@ -141,7 +133,7 @@
             
 
             <!-- Inmarsat -->
-            <a class="btn btn-warning mb-2" href="/add/inmarsat">Add Inmarsat</a>
+            <a class="btn btn-primary mb-2" href="/add/inmarsat">Add Inmarsat</a>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -173,7 +165,7 @@
                         </td>
                         <td>
                             <a
-                                class="btn btn-secondary btn-sm"
+                                class="btn btn-warning btn-sm"
                                 href="/edit/inmarsat/<%= item.id %>"
                                 >Edit</a
                             >
