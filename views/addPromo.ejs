@@ -21,22 +21,22 @@
             <h1>Add Promo</h1>
             <form method="post" action="/add/promo">
                 <div class="promo-add">
-                    <label for="promo">Promo</label>
-                    <input
-                        type="text"
-                        class="form-control"
+                    <label for="promo">Promo</label> <br />
+                    <textarea
                         id="promo"
                         name="promo"
-                        required />
+                        style="width: 500px;"
+                        rows="3"
+                        required></textarea>
                 </div>
                 <div class="promo-add">
-                    <label for="detail">Detail</label>
-                    <input
-                        type="text"
-                        class="form-control"
+                    <label for="detail">Detail</label><br />
+                    <textarea
                         id="detail"
                         name="detail"
-                        required />
+                        style="width: 500px;"
+                        rows="6"
+                        required></textarea>
                 </div>
                 <div class="waktu">
                     <label for="awal_promo">Awal Promo</label>
@@ -45,6 +45,7 @@
                         class="form-control"
                         id="awal_promo"
                         name="awal_promo"
+                        style="width: 170px"
                         required />
                 </div>
                 <div class="waktu">
@@ -54,6 +55,7 @@
                         class="form-control"
                         id="akhir_promo"
                         name="akhir_promo"
+                        style="width: 170px"
                         required />
                 </div>
                 <a href="/announcer/index" class="btn btn-secondary mt-2">Kembali</a>
