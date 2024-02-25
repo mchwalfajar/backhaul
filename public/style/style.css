@@ -4,7 +4,7 @@
     font-family: "Montserrat", sans-serif;
 }
 .carousel-caption {
-    top: 300px;
+    top: 250px;
 }
 
 .carousel-item img {
@@ -19,9 +19,9 @@
 .announcer {
     background-color: rgb(0, 0, 0);
 }
-
 .running {
     color: ghostwhite;
+    /* background-color: rgb(0, 0, 0); */
 }
 
 .navbar {
