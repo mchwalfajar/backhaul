@@ -24,30 +24,7 @@ db.connect((err) => {
 })
 
 // Carrousel View
-app.get("/announcer/maintenance", (req, res) => {
-    db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
-        if (err) {
-            console.error("Error querying maintenance data:", err)
-            res.status(500).send("Internal Server Error")
-            return
-        }
-
-        db.query("SELECT * FROM inmarsat", (err, inmarsatResults) => {
-            if (err) {
-                console.error("Error querying Inmarsat data:", err)
-                res.status(500).send('Internal Server Error')
-                return
-            }
-
-        res.render("maintenance", {
-                maintenanceItems: maintenanceResults,
-                inmarsatItems: inmarsatResults,
-                })
-            });
-        });
-    });
-
-app.get("/announcer/promo", (req, res) => {
+app.get("/announcer", (req, res) => {
     db.query("SELECT * FROM promo", (err, promoResults) => {
         if (err) {
             console.error("Error querying promo data:", err)
@@ -61,10 +38,19 @@ app.get("/announcer/promo", (req, res) => {
                 res.status(500).send('Internal Server Error')
                 return
             }
+
+            db.query("SELECT * FROM maintenance", (err, maintenanceResults) => {
+                if (err) {
+                    console.error("Error querying maintenance data:", err)
+                    res.status(500).send("Internal Server Error")
+                    return
+                }
             
-            res.render("promo", {
-                promoItems: promoResults,
-                inmarsatItems: inmarsatResults,
+                res.render("home", {
+                    promoItems: promoResults,
+                    inmarsatItems: inmarsatResults,
+                    maintenanceItems: maintenanceResults,
+                })
             });       
         });
     });
